@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, Element } from 'react-scroll';
+import { Link } from 'react-scroll';
 import { GoHomeFill } from "react-icons/go";
 import { IoTime } from "react-icons/io5";
 import { FaFolderOpen, FaAward } from "react-icons/fa6";
@@ -13,61 +13,35 @@ const VerticalNavbar: React.FC = () => {
   };
 
   return (
-    <div className="fixed right-8 top-1/4 flex flex-col space-y-2 bg-white bg-opacity-50 rounded-[25px] p-3 py-5">
-      <Link
-        to="home"
-        smooth={true}
-        duration={500}
-        spy={true}
-        onSetActive={() => handleSetActive('home')}
-        className={`p-3 rounded-[15px] cursor-pointer transition-colors duration-300 ease-in-out transform hover:bg-gray-300 ${activeSection === 'home' ? 'bg-gray-500 text-black' : 'bg-white text-gray-500'}`}
-      >
-        <GoHomeFill size={32} color={activeSection === 'home' ? 'white' : 'gray'} />
-      </Link>
-
-      <Link
-        to="timeline"
-        smooth={true}
-        duration={500}
-        spy={true}
-        onSetActive={() => handleSetActive('timeline')}
-        className={`p-3 rounded-[15px] cursor-pointer transition-colors duration-300 ease-in-out transform hover:bg-gray-300 ${activeSection === 'timeline' ? 'bg-gray-500 text-black' : 'bg-white text-gray-500'}`}
-      >
-        <IoTime size={32} color={activeSection === 'timeline' ? 'white' : 'gray'} />
-      </Link>
-
-      <Link
-        to="projects"
-        smooth={true}
-        duration={500}
-        spy={true}
-        onSetActive={() => handleSetActive('projects')}
-        className={`p-3 rounded-[15px] cursor-pointer transition-colors duration-300 ease-in-out transform hover:bg-gray-300 ${activeSection === 'projects' ? 'bg-gray-500 text-black' : 'bg-white text-gray-500'}`}
-      >
-        <FaFolderOpen size={32} color={activeSection === 'projects' ? 'white' : 'gray'} />
-      </Link>
-
-      <Link
-        to="certifications-awards"
-        smooth={true}
-        duration={500}
-        spy={true}
-        onSetActive={() => handleSetActive('certifications-awards')}
-        className={`p-3 rounded-[15px] cursor-pointer transition-colors duration-300 ease-in-out transform hover:bg-gray-300 ${activeSection === 'certifications-awards' ? 'bg-gray-500 text-black' : 'bg-white text-gray-500'}`}
-      >
-        <FaAward size={32} color={activeSection === 'certifications-awards' ? 'white' : 'gray'} />
-      </Link>
-
-      <Link
-        to="footer"
-        smooth={true}
-        duration={500}
-        spy={true}
-        onSetActive={() => handleSetActive('footer')}
-        className={`p-3 rounded-[15px] cursor-pointer transition-colors duration-300 ease-in-out transform hover:bg-gray-300 ${activeSection === 'footer' ? 'bg-gray-500 text-black' : 'bg-white text-gray-500'}`}
-      >
-        <MdContactPhone size={32} color={activeSection === 'footer' ? 'white' : 'gray'} />
-      </Link>
+    <div className="fixed right-8 top-1/4 flex flex-col space-y-2 bg-gradient-to-b from-gray-800 to-black bg-opacity-70 rounded-[25px] p-3 py-5 z-50 shadow-lg">
+      {[
+        { to: 'home', Icon: GoHomeFill },
+        { to: 'timeline', Icon: IoTime },
+        { to: 'projects', Icon: FaFolderOpen },
+        { to: 'certifications-awards', Icon: FaAward },
+        { to: 'footer', Icon: MdContactPhone },
+      ].map(({ to, Icon }) => (
+        <Link
+          key={to}
+          to={to}
+          smooth={true}
+          duration={500}
+          spy={true}
+          onSetActive={() => handleSetActive(to)}
+          className={`p-3 rounded-[15px] cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-110 ${
+            activeSection === to
+              ? 'bg-gradient-to-r from-white to-gray-300 text-gray-900'
+              : 'bg-transparent text-gray-400 hover:text-white'
+          }`}
+        >
+          <Icon
+            size={32}
+            className={`transition-colors duration-150 ${
+              activeSection === to ? 'text-gray-900' : 'text-current'
+            }`}
+          />
+        </Link>
+      ))}
     </div>
   );
 };
