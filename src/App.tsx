@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import HeroSection from './sections/HeroSection';
+import Timeline from './sections/Timeline';
+import Projects from './sections/Projects';
+import CertificationsAwards from './sections/CertificationsAwards';
+import Footer from './sections/Footer';
+import VerticalNavbar from './components/VeritcalNavbar';
+import { Element } from 'react-scroll';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <VerticalNavbar />
+      <Element name="home">
+        <HeroSection />
+      </Element>
+      <Element name="timeline">
+        <Timeline />
+      </Element>
+      <Element name="projects">
+        <Projects />
+      </Element>
+      <Element name="certifications-awards">
+        <CertificationsAwards />
+      </Element>
+      <Element name="footer">
+        <Footer />
+      </Element>
     </div>
   );
-}
+};
 
 export default App;
