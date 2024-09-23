@@ -13,12 +13,12 @@ const Timeline: React.FC = () => {
 
   // Use useTransform to create a smooth transition of elements as you scroll.
   const itemOpacity = useTransform(scrollYProgress, [0, 0.1, 0.9, 1], [1, 1, 0, 0]);
-  const itemY = useTransform(scrollYProgress, [0, 0.1, 0.2, 1], ["0%", "-20%", "-50%", "-100%"]);
+  const itemY = useTransform(scrollYProgress, [0, 0.1, 0.3, 1], ["0%", "-20%", "-50%", "-100%"]);
 
   const currentData = activeTab === 'Education' ? Education : Career;
 
   return (
-    <div id="timeline" ref={containerRef} className="bg-gradient-to-tl from-gray-500 via-gray-300 to-white text-gray-900 pt-20 flex flex-col items-center overflow-hidden">
+    <div id="timeline" ref={containerRef} className="bg-education bg-cover text-gray-900 pt-10 flex flex-col items-center overflow-hidden">
       
       {/* Sticky header with tabs */}
       <div className="sticky top-0 z-10 max-w-4xl mx-auto py-4 px-4"> {/* Added sticky class */}
@@ -64,7 +64,7 @@ const Timeline: React.FC = () => {
           {currentData.map((item, index) => (
             <motion.div
               key={index}
-              className={`mb-20 flex items-center justify-center w-full ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`} // Alternating layout
+              className={`-mb-5 flex items-center justify-center w-full ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`} // Alternating layout
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               // style={{ opacity: itemOpacity }}

@@ -1,23 +1,40 @@
+// Projects.tsx
 import React from 'react';
-
-const projects = [
-  { title: 'Project 1', description: 'Description for project 1.' },
-  { title: 'Project 2', description: 'Description for project 2.' },
-  { title: 'Project 3', description: 'Description for project 3.' },
-];
+import ProjectCard from '../components/ProjectCard'; // Adjust the path as necessary
+import { motion } from 'framer-motion';
+import projects from '../data/project';
 
 const Projects: React.FC = () => {
   return (
-    <div id="projects" className="-mt-[1000px] h-screen bg-gray-800 text-white flex flex-col justify-center items-center">
-      <h2 className="text-4xl font-bold mb-8">Projects</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+    <div
+      id="projects"
+      className="-mt-[860px] min-h-screen bg-gradient-to-b from-black via-gray-800 to-gray-900  text-white flex flex-col items-center py-20"
+    >
+      <motion.h2
+        className="text-5xl font-bold mb-12 "
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <h4 className="bg-clip-text text-transparent bg-gradient-to-r from-gray-200 via-gray-100 to-white">Projects</h4>
+      </motion.h2>
+      <motion.div
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 px-6 max-w-7xl"
+        initial="hidden"
+        animate="visible"
+        variants={{
+          hidden: {},
+          visible: {
+            transition: {
+              staggerChildren: 0.5,
+            },
+          },
+        }}
+      >
         {projects.map((project, index) => (
-          <div key={index} className="bg-gray-700 p-6 rounded-lg shadow-lg">
-            <h3 className="text-xl font-bold">{project.title}</h3>
-            <p className="mt-4">{project.description}</p>
-          </div>
+          <ProjectCard key={index} project={project} />
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };

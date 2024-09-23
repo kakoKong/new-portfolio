@@ -5,8 +5,8 @@ const Education = [
     subtitle: 'High School',
     description: 'Earned a High School Diploma after completing a 3-year Japanese Math-Science course alongside Japanese peers. Became the first Thai student to join the Math-Science program and ranked 2nd in Mathematics across the entire school.',
     images: [
-      './img/highskl2.jpg',
-      './img/highskl1.jpg',
+      './img/timeline/highskl2.jpg',
+      './img/timeline/highskl1.jpg',
     ]
   },
   {
@@ -24,8 +24,8 @@ const Education = [
     subtitle: 'Bsc Computer Science',
     description: 'Completed Bachelor Degree of Computer Science with modules such as Software Engineering, Machine Learning, Neural Computing, Computer Graphics, Robotics, and more. \n Wrote a dissertation on creating Restaurant Recommendation System using Machine Learning technique such as content-based filtering',
     images: [
-      './img/uni1.jpg',
-      './img/uni2.jpg'
+      './img/timeline/uni1.jpg',
+      './img/timeline/uni2.jpg'
     ]
   }
 ];
@@ -35,7 +35,7 @@ const Career = [
     year: 'June 2018 - July 2018',
     title: 'TDRI - Thailand Development Research Institute',
     subtitle: 'Data Engineer Intern',
-    description: 'TechCorp Inc., Developed web applications using React and Node.js',
+    description: 'Processed and transformed large datasets using NumPy and pandas, ensuring accurate and efficient data delivery for analysis. \n Contributed to publishing a research blog on COVID-19 infection statistics by providing clean, processed data to the team.',
     images: [
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVl0ZNsUuIzllyEaCFf0pSfZry5FzbLMHMsQ&s'
     ]
@@ -44,23 +44,23 @@ const Career = [
     year: 'Sep 2022 - Mar 2024',
     title: 'Credera UK',
     subtitle: 'Software Engineer',
-    description: 'DataInsights Co., Implemented machine learning models for predictive analytics',
+    description: "As a Software Engineer at Credera UK worked on integrating large language models (LLMs) to enhance client services and reduce response times. I also focused on DevOps and SRE projects, streamlining infrastructure deployment and improving CI/CD pipelines using tools like Terraform, Docker, and various cloud services.",
     images: [
       'https://www.credera.com/share.png',
-      './img/Credera2.jpg',
-      './img/Credera1.jpg'
+      './img/timeline/Credera2.jpg',
+      './img/timeline/Credera1.jpg'
     ]
   },
   {
     year: 'May 2024 - Nov 2024',
     title: 'Royal Thai Army',
-    subtitle: 'Software',
-    description: 'InnovateTech, Led a team in developing a cloud-based SaaS platform',
+    subtitle: 'Private',
+    description: "Sub Captain of the Squad: Showcasing exceptional leadership skills and fostering camaraderie among team members.\nDesigned and implemented a system to migrate and centralize data from multiple Excel files into a MySQL server, improving data accessibility and enabling efficient querying for commander requests.",
     images: [
       'https://static.thairath.co.th/media/dFQROr7oWzulq5FZUH56nptWRs9pMEfWJl0UM9JYNSBTnfn0C931k0v5pScrJRPkU9R.jpg',
-      './img/Army1.jpg',
-      './img/Army2.jpg',
-      './img/Army3.jpg',
+      './img/timeline/Army1.jpg',
+      './img/timeline/Army2.jpg',
+      './img/timeline/Army3.jpg',
     ]
   }
 ];

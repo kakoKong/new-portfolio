@@ -1,36 +1,29 @@
 import React from 'react';
+import ScrollingList from '../components/ScrollingList'; // Adjust the import path as necessary
 
-const certifications = ['Certification 1', 'Certification 2', 'Certification 3'];
-const awards = ['Award 1', 'Award 2', 'Award 3'];
-const skills = ['Skill 1', 'Skill 2', 'Skill 3'];
+const certifications = [
+{ text: "AWS Solution Architect", imageUrl: "/img/certifications/aws.png" },
+{ text: "AWS Machine Learning Specialty", imageUrl: "/img/certifications/aws.png" },
+{ text: "GCP Associate Cloud Engineer", imageUrl: "/img/certifications/gcp.jpg" },
+{ text: "ParliamentHack - Best AI Project", imageUrl: "/img/certifications/parliament.jpg" },
+{ text: "ParliamentHack - Most Humanized Project", imageUrl: "/img/certifications/parliament.jpg" },
+{ text: "ParliamentHack - Most Creative Project", imageUrl: "/img/certifications/parliament.jpg" },
+{ text: "Zero to One Startup Competition - Top 10 Finalist", imageUrl: "/img/certifications/yeah.jpg" },
+];
+
 
 const CertificationsAwards: React.FC = () => {
   return (
-    <div id="certifications-awards" className="h-screen bg-gray-900 text-white flex flex-col justify-center items-center">
+    <div
+      id="certifications-awards"
+      className="h-screen bg-gray-900 text-white flex flex-col justify-center items-center"
+    >
       <h2 className="text-4xl font-bold mb-8">Certifications & Awards</h2>
-      <div className="mb-8">
-        <h3 className="text-2xl font-bold">Certifications</h3>
-        <ul className="mt-4">
-          {certifications.map((cert, index) => (
-            <li key={index} className="mt-2">{cert}</li>
-          ))}
-        </ul>
-      </div>
-      <div className="mb-8">
-        <h3 className="text-2xl font-bold">Awards</h3>
-        <ul className="mt-4">
-          {awards.map((award, index) => (
-            <li key={index} className="mt-2">{award}</li>
-          ))}
-        </ul>
-      </div>
-      <div className="mb-8">
-        <h3 className="text-2xl font-bold">Skills</h3>
-        <ul className="mt-4">
-          {skills.map((skill, index) => (
-            <li key={index} className="mt-2">{skill}</li>
-          ))}
-        </ul>
+      
+      {/* Certifications */}
+      <div className="mb-8 w-full">
+        <h3 className="text-2xl font-bold mb-4 text-center mb-10">Certifications</h3>
+        <ScrollingList items={certifications} />
       </div>
     </div>
   );
