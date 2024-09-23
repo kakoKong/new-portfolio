@@ -1,5 +1,6 @@
+// ScrollingList.tsx
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, useAnimationControls, useMotionValue, useTransform } from 'framer-motion';
+import { motion, useAnimationControls, useMotionValue } from 'framer-motion';
 
 interface Item {
   text: string;
@@ -12,100 +13,70 @@ interface ScrollingListProps {
 }
 
 const ScrollingList: React.FC<ScrollingListProps> = ({ items, speed = 50 }) => {
-  const [containerWidth, setContainerWidth] = useState(0);
-  const [contentWidth, setContentWidth] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [contentWidth, setContentWidth] = useState(0);
+
   const controls = useAnimationControls();
   const x = useMotionValue(0);
 
+  // Duplicate the items to create a seamless loop
+  const duplicatedItems = [...items, ...items];
+
   useEffect(() => {
-    if (containerRef.current && contentRef.current) {
-      setContainerWidth(containerRef.current.offsetWidth);
-      setContentWidth(contentRef.current.offsetWidth / 2);
+    if (contentRef.current) {
+      const totalContentWidth = contentRef.current.scrollWidth / 2;
+      setContentWidth(totalContentWidth);
     }
   }, [items]);
 
-  const xInput = [-contentWidth, 0];
-  const xOutput = [-contentWidth, 0];
-  const transformedX = useTransform(x, xInput, xOutput);
-
   useEffect(() => {
-    if (containerWidth && contentWidth) {
-      const animateScroll = () => {
-        x.set(0);
-        controls.start({
-          x: -contentWidth,
-          transition: {
-            duration: contentWidth / speed,
-            ease: "linear",
-            repeat: Infinity,
-          },
-        });
-      };
-
-      animateScroll();
+    if (contentWidth) {
+      const totalWidth = contentWidth;
+      const duration = totalWidth / speed;
+      controls.start({
+        x: [0, -totalWidth],
+        transition: {
+          duration,
+          ease: 'linear',
+          repeat: Infinity,
+          repeatType: 'loop',
+        },
+      });
     }
-  }, [containerWidth, contentWidth, speed, controls, x]);
-
-  const handleMouseEnter = (index: number) => {
-    setHoveredIndex(index);
-    controls.stop();
-  };
-
-  const handleMouseLeave = () => {
-    setHoveredIndex(null);
-    const currentX = x.get();
-    x.set(currentX);
-    controls.start({
-      x: -contentWidth,
-      transition: {
-        duration: (contentWidth + currentX) / speed,
-        ease: "linear",
-        repeat: Infinity,
-      },
-    });
-  };
-
-  const duplicatedItems = [...items, ...items];
+  }, [contentWidth, speed, controls]);
 
   return (
-    <div ref={containerRef} className="overflow-hidden w-full">
+    <div ref={containerRef} className="overflow-hidden w-full my-10">
       <motion.div
         ref={contentRef}
         className="flex"
-        style={{ x: transformedX }}
+        style={{ x }}
         animate={controls}
       >
-        {items.map((item, index) => (
-          <motion.div
+        {duplicatedItems.map((item, index) => (
+          <div
             key={index}
-            className="flex-none mx-4 p-6 bg-gray-800 text-white rounded-lg cursor-pointer"
+            className="flex-none mx-4 p-6 bg-gray-800 text-white rounded-lg"
             style={{
-              width: '300px',
-              height: '150px',
+              minWidth: '250px',
+              width: '25%',
+              height: '180px',
             }}
-            onMouseEnter={() => handleMouseEnter(index)}
-            onMouseLeave={handleMouseLeave}
-            animate={{
-              scale: hoveredIndex === index % items.length ? 1.1 : 1,
-            }}
-            transition={{ duration: 0.3 }}
           >
             <div className="flex items-center h-full">
               <div className="w-1/3 h-full flex items-center justify-center">
-                <img 
-                  src={item.imageUrl} 
+                <img
+                  src={item.imageUrl}
                   alt={item.text}
                   className="max-w-full max-h-full object-contain"
                 />
               </div>
               <div className="w-2/3 pl-4 flex items-center">
-                <p className="text-lg font-semibold">{item.text}</p>
+                <p className="text-xl font-semibold">{item.text}</p>
               </div>
             </div>
-          </motion.div>
+          </div>
         ))}
       </motion.div>
     </div>
