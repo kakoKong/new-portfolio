@@ -13,7 +13,7 @@ const VerticalNavbar: React.FC = () => {
   };
 
   return (
-    <div className="fixed right-8 top-1/4 flex flex-col space-y-2 bg-gradient-to-b from-gray-800 to-black bg-opacity-70 rounded-[25px] p-3 py-5 z-50 shadow-lg">
+    <div className="fixed right-8 top-1/4 flex flex-col space-y-2 bg-gradient-to-b from-gray-400 to-black opacity-70 rounded-[25px] p-3 py-5 z-50 shadow-lg">
       {[
         { to: 'home', Icon: GoHomeFill },
         { to: 'timeline', Icon: IoTime },
