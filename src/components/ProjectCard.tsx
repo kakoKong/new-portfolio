@@ -71,7 +71,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
               <span className="text-sm text-gray-400">{project.status}</span>
             </div>
             <motion.button
-              className="px-4 py-2 bg-gray-400 text-white rounded-md text-sm font-medium"
+              className="px-4 py-2 bg-gray-700 text-white rounded-md text-sm font-medium"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
