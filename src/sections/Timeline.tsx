@@ -11,7 +11,7 @@ const Timeline: React.FC = () => {
     offset: ["start start", "end start"]
   });
 
-  const itemY = useTransform(scrollYProgress, [0, 0.1, 0.3, 1], ["0%", "-20%", "-50%", "-70%"]);
+  const itemY = useTransform(scrollYProgress, [0, 0.1, 0.3, 1], ["0%", "-20%", "-30%", "-70%"]);
 
   const currentData = activeTab === 'Education' ? Education : Career;
 
