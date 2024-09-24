@@ -135,7 +135,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                 )}
                 <div className="flex justify-end">
                   <motion.button
-                    className="px-6 py-2 bg-gray-400 text-white rounded-md font-medium"
+                    className="px-6 py-2 bg-gray-700 text-white rounded-md font-medium"
                     onClick={closeModal}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
