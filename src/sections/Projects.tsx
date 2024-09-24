@@ -8,7 +8,7 @@ const Projects: React.FC = () => {
   return (
     <div
       id="projects"
-      className="-mt-[860px] min-h-screen bg-gradient-to-b from-black via-gray-800 to-gray-900  text-white flex flex-col items-center py-20"
+      className="min-h-screen bg-gradient-to-b from-black via-gray-800 to-gray-900  text-white flex flex-col items-center py-20"
     >
       <motion.h2
         className="text-5xl font-bold mb-12 "

@@ -4,3 +4,8 @@
 
 /* Importing Google Fonts via CSS */
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+

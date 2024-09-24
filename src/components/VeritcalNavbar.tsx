@@ -13,7 +13,7 @@ const VerticalNavbar: React.FC = () => {
   };
 
   return (
-    <div className="fixed right-8 top-1/4 flex flex-col space-y-2 bg-gradient-to-b from-gray-400 to-black opacity-70 rounded-[25px] p-3 py-5 z-50 shadow-lg">
+    <div className="fixed bottom-0 w-full sm:w-fit sm:h-fit flex justify-around sm:justify-center sm:right-8 sm:top-1/4 flex-row sm:flex-col sm:space-y-2 sm:bg-gradient-to-b sm:from-gray-400 sm:to-black sm:opacity-70 sm:rounded-[25px] p-3 py-5 z-50 shadow-lg">
       {[
         { to: 'home', Icon: GoHomeFill },
         { to: 'timeline', Icon: IoTime },
@@ -25,7 +25,7 @@ const VerticalNavbar: React.FC = () => {
           key={to}
           to={to}
           smooth={true}
-          duration={500}
+          duration={200}
           spy={true}
           onSetActive={() => handleSetActive(to)}
           className={`p-3 rounded-[15px] cursor-pointer transition-all duration-300 ease-in-out transform hover:scale-110 ${

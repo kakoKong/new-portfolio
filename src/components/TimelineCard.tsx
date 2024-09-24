@@ -37,7 +37,7 @@ const TimelineCard: React.FC<TimelineCardProps> = ({ title, subtitle, descriptio
                 <div key={index} className="text-center">
                   <img
                     src={image}
-                    alt={`${title} image ${index + 1}`}
+                    alt={`${title} ${index + 1}`}
                     className="rounded-lg shadow-md object-cover h-60 w-full cursor-pointer transition-transform transform hover:scale-105"
                   />
                 </div>

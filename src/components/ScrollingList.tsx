@@ -1,4 +1,3 @@
-// ScrollingList.tsx
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, useAnimationControls, useMotionValue } from 'framer-motion';
 
@@ -57,23 +56,18 @@ const ScrollingList: React.FC<ScrollingListProps> = ({ items, speed = 50 }) => {
         {duplicatedItems.map((item, index) => (
           <div
             key={index}
-            className="flex-none mx-4 p-6 bg-gray-800 text-white rounded-lg"
-            style={{
-              minWidth: '250px',
-              width: '25%',
-              height: '180px',
-            }}
+            className="flex-none mx-2 p-4 sm:mx-4 sm:p-6 bg-gray-800 text-white rounded-lg w-[60%] sm:w-[25%] md:w-[30%] h-[150px] sm:h-[180px]"
           >
             <div className="flex items-center h-full">
               <div className="w-1/3 h-full flex items-center justify-center">
                 <img
                   src={item.imageUrl}
                   alt={item.text}
-                  className="max-w-full max-h-full object-contain"
+                  className="max-w-full max-h-full object-contain rounded-lg"
                 />
               </div>
               <div className="w-2/3 pl-4 flex items-center">
-                <p className="text-xl font-semibold">{item.text}</p>
+                <p className="text-lg sm:text-xl font-semibold">{item.text}</p>
               </div>
             </div>
           </div>

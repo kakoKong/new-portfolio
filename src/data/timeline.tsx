@@ -1,6 +1,6 @@
 const Education = [
   {
-    year: '2010-2014',
+    year: '2016-2018',
     title: 'Meitoku Gijuku Senior High School',
     subtitle: 'High School',
     description: 'Earned a High School Diploma after completing a 3-year Japanese Math-Science course alongside Japanese peers. Became the first Thai student to join the Math-Science program and ranked 2nd in Mathematics across the entire school.',
@@ -10,7 +10,7 @@ const Education = [
     ]
   },
   {
-    year: '2014-2016',
+    year: '2019-2020',
     title: 'Warwick IFP - Science and Engineering',
     subtitle: 'Interantional Foundation Programme',
     description: "Completed a Foundation Course in Science and Engineering, covering modules such as Calculus, Physics, Chemistry, and Computer Science. Achieved a distinction with a score of 76%, leading to the pursuit of a Bachelor's degree in Computer Science at the University of Warwick.",
@@ -19,7 +19,7 @@ const Education = [
     ]
   },
   {
-    year: '2018-2019',
+    year: '2020-2022',
     title: 'University of Warwick',
     subtitle: 'Bsc Computer Science',
     description: 'Completed Bachelor Degree of Computer Science with modules such as Software Engineering, Machine Learning, Neural Computing, Computer Graphics, Robotics, and more. \n Wrote a dissertation on creating Restaurant Recommendation System using Machine Learning technique such as content-based filtering',
@@ -32,7 +32,7 @@ const Education = [
 
 const Career = [
   {
-    year: 'June 2018 - July 2018',
+    year: 'Jul 2018 - Aug 2018',
     title: 'TDRI - Thailand Development Research Institute',
     subtitle: 'Data Engineer Intern',
     description: 'Processed and transformed large datasets using NumPy and pandas, ensuring accurate and efficient data delivery for analysis. \n Contributed to publishing a research blog on COVID-19 infection statistics by providing clean, processed data to the team.',

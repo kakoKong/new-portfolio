@@ -59,7 +59,7 @@ const HeroSection = () => {
 
       {/* Background text */}
       <motion.h1 
-        className="text-[200px] font-extrabold opacity-5 absolute select-none"
+        className="text-[80px] sm:text-[120px] md:text-[150px] lg:text-[200px] font-extrabold opacity-5 absolute select-none"
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 0.05 }}
         transition={{ duration: 2 }}
@@ -75,13 +75,13 @@ const HeroSection = () => {
           animate={{ y: '0vh' }}
           transition={{ type: 'spring', stiffness: 120, duration: 1.5 }}
         >
-          <h1 className="text-8xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-gray-500">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-gray-500">
             PATTARATHON
           </h1>
-          <h2 className="text-6xl font-semibold text-gray-300">NOPWATTANAPONG</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-gray-300">NOPWATTANAPONG</h2>
         </motion.div>
 
-        <div className="mt-8 h-8 text-3xl font-semibold">
+        <div className="mt-8 h-8 text-xl sm:text-2xl md:text-3xl font-semibold">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentTextIndex}
@@ -98,7 +98,7 @@ const HeroSection = () => {
         </div>
 
         <motion.div
-          className="mt-20 cursor-pointer text-lg group"
+          className="mt-10 sm:mt-16 lg:mt-20 cursor-pointer text-base sm:text-lg group"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
@@ -112,7 +112,7 @@ const HeroSection = () => {
             Explore Me
           </span>
           <motion.div
-            className="mt-2 w-6 h-6 border-b-2 border-r-2 border-gray-400 group-hover:border-white transition-colors duration-300 mx-auto"
+            className="mt-2 w-5 h-5 sm:w-6 sm:h-6 border-b-2 border-r-2 border-gray-400 group-hover:border-white transition-colors duration-300 mx-auto"
             animate={{
               y: [0, 5, 0],
             }}

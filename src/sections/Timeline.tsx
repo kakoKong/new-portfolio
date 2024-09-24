@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { Career, Education } from '../data/timeline';
-import TimelineCard from '../components/TimelineCard'; // Import the new Card Component
+import TimelineCard from '../components/TimelineCard';
 
 const Timeline: React.FC = () => {
   const [activeTab, setActiveTab] = useState('Education');
@@ -11,84 +11,91 @@ const Timeline: React.FC = () => {
     offset: ["start start", "end start"]
   });
 
-  // Use useTransform to create a smooth transition of elements as you scroll.
-  const itemOpacity = useTransform(scrollYProgress, [0, 0.1, 0.9, 1], [1, 1, 0, 0]);
-  const itemY = useTransform(scrollYProgress, [0, 0.1, 0.3, 1], ["0%", "-20%", "-50%", "-100%"]);
+  const itemY = useTransform(scrollYProgress, [0, 0.1, 0.3, 1], ["0%", "-20%", "-50%", "-70%"]);
 
   const currentData = activeTab === 'Education' ? Education : Career;
 
   return (
-    <div id="timeline" ref={containerRef} className="bg-education bg-cover text-gray-900 pt-10 flex flex-col items-center overflow-hidden">
-      
-      {/* Sticky header with tabs */}
-      <div className="sticky top-0 z-10 max-w-4xl mx-auto py-4 px-4"> {/* Added sticky class */}
-        <div className="flex justify-center space-x-4">
-          {/* Education Button */}
-          <button
-            onClick={() => setActiveTab('Education')}
-            className={`transition-all duration-500 transform ${activeTab === 'Education'
-                ? 'text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-black via-gray-700 to-gray-400 scale-110' // Gradient color for active state
-                : 'text-2xl text-gray-500 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-black hover:to-gray-500 hover:scale-105' // Hover gradient for inactive
-              } px-6 py-2`}
-          >
-            Education
-          </button>
-
-          {/* Career Button */}
-          <button
-            onClick={() => setActiveTab('Career')}
-            className={`transition-all duration-500 transform ${activeTab === 'Career'
-                ? 'text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-l from-black via-gray-700 to-gray-400 scale-110' // Gradient color for active state
-                : 'text-2xl text-gray-500 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-black hover:to-gray-500  hover:scale-105' // Hover gradient for inactive
-              } px-6 py-2`}
-          >
-            Career
-          </button>
+    <section id="timeline" ref={containerRef} className="bg-education bg-cover text-white pt-20 pb-40 min-h-screen -mb-[860px]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Sticky header with tabs */}
+        <div className="top-0 z-50 pt-5 pb-5">
+          <div className="flex justify-center space-x-4 sm:space-x-8">
+            {['Education', 'Career'].map((tab) => (
+              <motion.button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`text-2xl sm:text-3xl lg:text-4xl font-bold transition-all duration-300 ${activeTab === tab
+                  ? 'text-transparent bg-clip-text bg-gradient-to-r from-black via-gray-500 to-gray-400 scale-110'
+                  : 'text-gray-300 hover:text-gray-200'
+                  }`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 1.15 }}
+              >
+                {tab}
+              </motion.button>
+            ))}
+          </div>
         </div>
+
+        {/* Timeline Content with Animation Transition */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -50 }}
+            transition={{ duration: 0.5 }}
+            className="relative mt-16"
+            style={{ y: itemY }}
+          >
+            {/* Vertical timeline line */}
+            <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gray-300"></div>
+
+
+            {currentData.map((item, index) => (
+              <motion.div
+                key={index}
+                className={`mb-16 flex flex-col items-center sm:flex-row ${index % 2 === 0 ? 'sm:flex-row-reverse' : ''
+                  }`}
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+              >
+                {/* Year */}
+                <div className={`w-full sm:w-5/12 ${index % 2 === 0 ? 'text-left' : 'text-right'}`}>
+                  <motion.span
+                    className="inline-block text-xl sm:text-2xl font-bold text-gray-500"
+                    whileHover={{ scale: 1.1, color: "#60A5FA" }}
+                  >
+                    {item.year}
+                  </motion.span>
+                </div>
+
+                {/* Timeline node */}
+                <div className="hidden md:flex w-full md:w-2/12 justify-center z-40 my-6 md:my-0">
+                  <motion.div
+                    className="w-4 h-4 bg-gray-500 rounded-full"
+                    whileHover={{ scale: 1.5, backgroundColor: "#60A5FA" }}
+                  />
+                </div>
+
+                {/* TimelineCard */}
+                <div className="w-full sm:w-5/12">
+                  <TimelineCard
+                    title={item.title}
+                    subtitle={item.subtitle}
+                    description={item.description}
+                    images={item.images}
+                    reverse={index % 2 !== 0}
+                  />
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </AnimatePresence>
       </div>
-
-      {/* Timeline Content with Animation Transition */}
-      <AnimatePresence mode='wait'>
-        <motion.div
-          key={activeTab} // Ensure each tab content gets its own key for the transition
-          initial={{ opacity: 0, x: 50 }} // Slide in from the right
-          animate={{ opacity: 1, x: 0 }} // Animate to visible
-          exit={{ opacity: 0, x: -50 }} // Slide out to the left
-          transition={{ duration: 0.5 }}
-          className="w-full max-w-6xl px-4 py-16 relative"
-          style={{ y: itemY }}
-        >
-          {/* Vertical timeline line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gray-300"></div>
-
-          {currentData.map((item, index) => (
-            <motion.div
-              key={index}
-              className={`-mb-5 flex items-center justify-center w-full ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`} // Alternating layout
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              // style={{ opacity: itemOpacity }}
-              transition={{ duration: 0.2, delay: index * 0.1 }}
-            >
-              {/* Year and TimelineCard placed on opposite sides */}
-              <div className={`w-1/2 text-gray-600 mx-2 font-semibold text-3xl ${index % 2 === 0 ? 'text-right' : 'text-left'} px-8`}>
-                {item.year}
-              </div>
-
-              <div className="w-1/2 px-5">
-                <TimelineCard
-                  title={item.title}
-                  subtitle={item.subtitle}
-                  description={item.description}
-                  images={item.images} // Assuming each item has an 'images' array
-                  reverse={index % 2 !== 0} // Reversed for odd items
-                />
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </AnimatePresence>
-    </div>
+    </section>
   );
 };
 
