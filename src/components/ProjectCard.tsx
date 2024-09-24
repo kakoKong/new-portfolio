@@ -115,7 +115,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
                     {project.status}
                   </span>
                 </div>
-                <p className="text-gray-600 dark:text-gray-300 mb-6">{project.description}</p>
+                <p className="text-gray-600 dark:text-gray-300 mb-6 text-sm md:text-lg">{project.description}</p>
                 {project.techStack && project.techStack.length > 0 && (
                   <div className="mb-6">
                     <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
