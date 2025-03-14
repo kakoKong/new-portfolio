@@ -5,6 +5,7 @@ const certifications = [
   { text: "AWS Solution Architect", imageUrl: "/img/certifications/aws.png" },
   { text: "AWS Machine Learning Specialty", imageUrl: "/img/certifications/aws.png" },
   { text: "GCP Associate Cloud Engineer", imageUrl: "/img/certifications/gcp.jpg" },
+  { text: "GCP Professional Solution Architect", imageUrl: "/img/certifications/gcp.jpg" },
 ];
 
 const awards = [
