@@ -63,12 +63,20 @@ const EnhancedFooter: React.FC = () => {
             <h3 className="text-lg font-semibold mb-4">Resumes</h3>
             <div className="space-y-2">
               <a 
-                href="/pdf/KongDevOps-Mar25.pdf" 
+                href="/pdf/KongSoftEng-Sep24.pdf" 
                 download
                 className="flex items-center space-x-2 text-sm hover:underline"
               >
                 <Download size={16} />
-                <span>Resume</span>
+                <span>Software Engineer Resume</span>
+              </a>
+              <a 
+                href="/pdf/KongDevOps-Sep24.pdf" 
+                download
+                className="flex items-center space-x-2 text-sm hover:underline"
+              >
+                <Download size={16} />
+                <span>DevOps Engineer Resume</span>
               </a>
             </div>
           </div>
